@@ -1,5 +1,6 @@
 #include "Error.h"
 
+#include <glew.h>
 #include <iostream>
 
 void GLClearError()

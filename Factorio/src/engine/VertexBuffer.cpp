@@ -1,5 +1,6 @@
 #include "VertexBuffer.h"
 
+#include <glew.h>
 #include "Error.h"
 
 VertexBuffer::VertexBuffer(const void* data, unsigned int size, bool dynamic)

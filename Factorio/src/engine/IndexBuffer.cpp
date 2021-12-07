@@ -1,5 +1,7 @@
 #include "IndexBuffer.h"
 
+#include <glew.h>
+
 #include "Error.h"
 
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count) :

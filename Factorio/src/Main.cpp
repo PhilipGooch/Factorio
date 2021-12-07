@@ -15,16 +15,21 @@
 
 static Input input;
 
-void KeyCallBack(GLFWwindow*, int key, int scanCode, int action, int mods)
+static void KeyCallback(GLFWwindow* window, int key, int scanCode, int action, int mods)
 {
     if (action == GLFW_PRESS)
     {
-        input.setKeyDown(key);
+        input.SetKeyDown(key);
     }
     if (action == GLFW_RELEASE)
     {
-        input.setKeyUp(key);
+        input.SetKeyUp(key);
     }
+}
+
+static void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
+{
+    input.SetMousePosition(xpos, ypos);
 }
 
 int main(void)
@@ -51,7 +56,8 @@ int main(void)
 
     glfwSwapInterval(1); 
 
-    glfwSetKeyCallback(window, KeyCallBack);
+    glfwSetKeyCallback(window, KeyCallback);
+    glfwSetCursorPosCallback(window, CursorPosCallback);
 
     if (glewInit() != GLEW_OK)
     {

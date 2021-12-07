@@ -2,6 +2,8 @@
 
 #include "Error.h"
 
+#include <string>
+
 class Texture
 {
 private:

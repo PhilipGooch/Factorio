@@ -21,15 +21,26 @@ public:
 	void OnRender();
 	void OnImGuiRender();
 
-protected:
-	Input& m_Input;
+	
 
 private:
+	struct Tile
+	{
+		int type;
+		bool targeted;
+	};
+
 	struct Vertex
 	{
-		float gridPos[2];
-		float type;
+		float gridPosition[2];
+		float type;				// TODO: change to int
+		float targeted;			// TODO: change to bool
 	};
+
+	Input& m_Input;
+
+	glm::vec2 m_MousePosition;
+	glm::vec2 m_MouseGridPosition;
 
 	std::unique_ptr<VertexArray> m_VertexArray;
 	std::unique_ptr<VertexBuffer> m_VertexBuffer;
@@ -39,7 +50,7 @@ private:
 	int m_GridExtent;
 	const int m_TileExtent;
 
-	std::vector<std::vector<int>> m_Grid;
+	std::vector<std::vector<Tile>> m_Grid;
 
 	std::vector<Vertex> m_Vertices;
 	std::vector<unsigned int> m_Indices;
@@ -53,5 +64,6 @@ private:
 	glm::mat4 m_View;
 	glm::mat4 m_Model;
 
+	float m_TileScreenExtent;
 };
 

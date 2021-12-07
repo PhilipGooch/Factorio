@@ -1,7 +1,10 @@
 #pragma once
 
-#include <vector>
+#include <glew.h>
+
 #include "Error.h"
+
+#include <vector>
 
 struct VertexBufferElement
 {
@@ -13,9 +16,9 @@ struct VertexBufferElement
 	{
 		switch (type)
 		{
-			case GL_FLOAT:			return 4;
-			case GL_UNSIGNED_INT:	return 4;
-			case GL_INT:			return 4;
+		case GL_FLOAT:			return 4;
+		case GL_UNSIGNED_INT:	return 4;
+		case GL_INT:			return 4;
 		}
 		ASSERT(false);
 		return 0;
