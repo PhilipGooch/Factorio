@@ -32,9 +32,8 @@ private:
 
 	struct Vertex
 	{
-		float gridPosition[2];
-		float type;				// TODO: change to int
-		float targeted;			// TODO: change to bool
+		float position[2];
+		float texCoord[2];
 	};
 
 	Input& m_Input;
@@ -74,5 +73,8 @@ private:
 	glm::mat4 m_Model_YellowSelection1x1;
 
 	float m_TileScreenExtent;
+
+	unsigned char* m_GridTextureBuffer;
+	unsigned int m_GridTextureID;
 };
 

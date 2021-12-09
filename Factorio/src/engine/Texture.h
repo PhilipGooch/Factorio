@@ -6,7 +6,8 @@
 
 class Texture
 {
-private:
+//private: 
+public:
 	unsigned int m_RendererID;
 	std::string m_FilePath;
 	unsigned char* m_LocalBuffer;

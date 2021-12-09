@@ -97,7 +97,7 @@ int main(void)
         ImGui::StyleColorsDark();
 
         bool running = true;
-        while (running) //!glfwWindowShouldClose(window)
+        while (running && !glfwWindowShouldClose(window))
         {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
