@@ -43,22 +43,22 @@ int main(void)
         return -1;
     }
 
-    int monitorCount;
-    GLFWmonitor* monitor = glfwGetMonitors(&monitorCount)[1];
-    //GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    //int monitorCount;
+    //GLFWmonitor* monitor = glfwGetMonitors(&monitorCount)[1];
+    ////GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    //
+    //const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    //
+    //glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+    //glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+    //glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+    //glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+    //
+    //window = glfwCreateWindow(mode->width, mode->height, "", monitor, NULL);
+    //
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-    glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-    glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-    glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-    glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-    window = glfwCreateWindow(mode->width, mode->height, "", monitor, NULL);
-
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-
-    //window = glfwCreateWindow(1024, 512, "", NULL, NULL);
+    window = glfwCreateWindow(1024, 512, "", NULL, NULL);
 
     if (!window)
     {
@@ -82,8 +82,10 @@ int main(void)
         return -1;
     }
 
-    int width = mode->width;
-    int height = mode->height;
+    //int width = mode->width;
+    //int height = mode->height;
+    int width = 1024;
+    int height = 512;
 
 
     {
