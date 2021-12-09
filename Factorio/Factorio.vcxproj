@@ -423,8 +423,10 @@
     <Image Include="res\textures\test.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\fragment.frag.glsl" />
-    <None Include="src\shaders\vertex.vert.glsl" />
+    <None Include="src\shaders\grid.frag.glsl" />
+    <None Include="src\shaders\grid.vert.glsl" />
+    <None Include="src\shaders\Selection.frag.glsl" />
+    <None Include="src\shaders\Selection.vert.glsl" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

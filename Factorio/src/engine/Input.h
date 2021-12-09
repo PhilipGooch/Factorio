@@ -8,6 +8,8 @@ public:
 
 	bool GetKeyDown(int key)
 	{
+		if (key == 256 /*Escape*/)				
+			return m_Keys[key];
 		if (key >= 65 && key <= 90)
 			return m_Keys[key - 65];
 		else
@@ -16,14 +18,34 @@ public:
 
 	void SetKeyDown(int key)
 	{
+		if (key == 256 /*Escape*/)
+			m_Keys[key] = true;
 		if (key >= 65 && key <= 90)
+		{
 			m_Keys[key - 65] = true;
+		}
 	}
 
 	void SetKeyUp(int key)
 	{
 		if (key >= 0)
+		{
 			m_Keys[key - 65] = false;
+		}
+	}
+
+	bool GetKeyPressed(int key)
+	{
+		if (key >= 0)
+		{
+			return !m_LastKeys[key - 65] && m_Keys[key - 65];
+		}
+		return false;
+	}
+
+	void Update()
+	{
+		memcpy(&m_LastKeys[0], &m_Keys[0], 256 * sizeof(bool));
 	}
 
 	bool GetMouseDown() { return m_MouseDown; }
@@ -37,6 +59,6 @@ private:
 	glm::vec2 m_MousePosition;
 	bool m_MouseDown;
 
-	bool m_Keys[256]{ false };
-
+	bool m_Keys[257]{ false };
+	bool m_LastKeys[257]{ false };
 };

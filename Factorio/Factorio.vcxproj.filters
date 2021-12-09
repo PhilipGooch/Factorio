@@ -1420,7 +1420,9 @@
     <None Include="src\vendor\glm\gtc\reciprocal.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="src\shaders\fragment.frag.glsl" />
-    <None Include="src\shaders\vertex.vert.glsl" />
+    <None Include="src\shaders\grid.frag.glsl" />
+    <None Include="src\shaders\grid.vert.glsl" />
+    <None Include="src\shaders\Selection.frag.glsl" />
+    <None Include="src\shaders\Selection.vert.glsl" />
   </ItemGroup>
 </Project>

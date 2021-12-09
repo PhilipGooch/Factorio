@@ -14,10 +14,10 @@
 class Application
 {
 public:
-	Application(Input& input);
+	Application(Input& input, float width, float height);
 	~Application();
 
-	void OnUpdate(float deltaTime);
+	bool OnUpdate(float deltaTime);
 	void OnRender();
 	void OnImGuiRender();
 
@@ -38,31 +38,40 @@ private:
 	};
 
 	Input& m_Input;
+	float m_Width, m_Height;
 
 	glm::vec2 m_MousePosition;
 	glm::vec2 m_MouseGridPosition;
 
-	std::unique_ptr<VertexArray> m_VertexArray;
-	std::unique_ptr<VertexBuffer> m_VertexBuffer;
-	std::unique_ptr<IndexBuffer> m_IndexBuffer;
-	std::unique_ptr<Shader> m_Shader;
+	std::unique_ptr<VertexArray> m_VertexArray_Grid;
+	std::unique_ptr<VertexBuffer> m_VertexBuffer_Grid;
+	std::unique_ptr<IndexBuffer> m_IndexBuffer_Grid;
+	std::unique_ptr<Shader> m_Shader_Grid;
+
+	std::unique_ptr<VertexArray> m_VertexArray_YellowSelection1x1;
+	std::unique_ptr<Texture> m_Texture_YellowSelection1x1;
+	std::unique_ptr<VertexBuffer> m_VertexBuffer_YellowSelection1x1;
+	std::unique_ptr<IndexBuffer> m_IndexBuffer_YellowSelection1x1;
+	std::unique_ptr<Shader> m_Shader_YellowSelection1x1;
+
 
 	int m_GridExtent;
 	const int m_TileExtent;
 
 	std::vector<std::vector<Tile>> m_Grid;
 
-	std::vector<Vertex> m_Vertices;
-	std::vector<unsigned int> m_Indices;
+	std::vector<Vertex> m_Vertices_Grid;
+	std::vector<unsigned int> m_Indices_Grid;
 
 	float m_AspectRatio;
-	float m_Zoom;
+	int m_Zoom;
 	float m_Speed;
 	float m_ZoomSpeed;
 	glm::vec3 m_Position;
 	glm::mat4 m_Projection;
 	glm::mat4 m_View;
-	glm::mat4 m_Model;
+	glm::mat4 m_Model_Grid;
+	glm::mat4 m_Model_YellowSelection1x1;
 
 	float m_TileScreenExtent;
 };

@@ -43,7 +43,23 @@ int main(void)
         return -1;
     }
 
-    window = glfwCreateWindow(1024, 512, "Hello World", NULL, NULL);
+    int monitorCount;
+    GLFWmonitor* monitor = glfwGetMonitors(&monitorCount)[1];
+    //GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+    glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+    glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+    glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+    glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
+    window = glfwCreateWindow(mode->width, mode->height, "", monitor, NULL);
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
+    //window = glfwCreateWindow(1024, 512, "", NULL, NULL);
+
     if (!window)
     {
         glfwTerminate();
@@ -66,23 +82,26 @@ int main(void)
         return -1;
     }
 
+    int width = mode->width;
+    int height = mode->height;
+
 
     {
+        Application application(input, width, height);
 
         ImGui::CreateContext();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 130");
         ImGui::StyleColorsDark();
 
-        Application application(input);
-
-        while (!glfwWindowShouldClose(window))
+        bool running = true;
+        while (running) //!glfwWindowShouldClose(window)
         {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
 
-            application.OnUpdate(0);
+            if (!application.OnUpdate(0)) running = false;
             application.OnRender();
             application.OnImGuiRender();
 

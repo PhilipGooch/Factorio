@@ -13,7 +13,7 @@ private:
 	int m_Width, m_Height, m_BPP;
 
 public:
-	Texture(const std::string& path);
+	Texture(const std::string& path, bool nearest);
 	~Texture();
 
 	unsigned char* GetLocalBuffer() { return m_LocalBuffer; }
